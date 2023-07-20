@@ -13,7 +13,7 @@ The Online Survey and Data Analysis Platform is a web application designed to fa
 
 -Database Integration: Surveys, questions, and responses are stored securely in an SQLite database, ensuring data integrity and persistence across sessions.
 
-## Link to application : [Online Survey Application}(https://survey-platform-u7w37ndtkqj.streamlit.app/)
+## Link to application : [Online Survey Application](https://survey-platform-u7w37ndtkqj.streamlit.app/)
 ## Getting Started
 Prerequisites
 -Python 3.6 or higher
