@@ -139,7 +139,6 @@ def view_results():
     questions = cursor.fetchall()
     question_ids = [question[0] for question in questions]
     question_texts = [question[1] for question in questions]
-
     # Display the responses for each question
     for i, question_text in enumerate(question_texts):
         st.subheader(f"Question {i+1}: {question_text}")
@@ -156,6 +155,7 @@ def view_results():
                 st.write(f"Response {j+1}: {response[0]} (Sentiment: {sentiment})")
         else:
             st.write("No responses for this question.")
+
 
     conn.close()
 
