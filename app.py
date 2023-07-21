@@ -1,5 +1,6 @@
 import streamlit as st
 import sqlite3
+import matplotlib.pyplot as plt
 
 def create_db():
     conn = sqlite3.connect("survey.db")
@@ -128,12 +129,13 @@ def view_results():
                        (surveys[survey_titles.index(selected_survey)][0], question_ids[i]))
         responses = cursor.fetchall()
         if responses:
-            for response in responses:
-                st.write(response[0])
+            response_values = [response[0] for response in responses]
+            st.bar_chart(response_values)
         else:
             st.write("No responses for this question.")
 
     conn.close()
+
 
 
 def remove_survey():
