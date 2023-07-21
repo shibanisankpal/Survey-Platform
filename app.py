@@ -1,6 +1,11 @@
 import streamlit as st
 import sqlite3
 import matplotlib.pyplot as plt
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+# Download the sentiment analyzer model (only needed once)
+nltk.download('vader_lexicon')
 
 def create_db():
     conn = sqlite3.connect("survey.db")
@@ -105,6 +110,19 @@ def take_survey():
         conn.close()
         st.success("Survey submitted successfully!")
 
+def perform_sentiment_analysis(response):
+    sid = SentimentIntensityAnalyzer()
+    sentiment_score = sid.polarity_scores(response)
+
+    if sentiment_score['compound'] >= 0.05:
+        sentiment_label = "Positive"
+    elif sentiment_score['compound'] <= -0.05:
+        sentiment_label = "Negative"
+    else:
+        sentiment_label = "Neutral"
+
+    return sentiment_label
+
 def view_results():
     st.header("View Survey Results")
     conn = sqlite3.connect("survey.db")
@@ -131,10 +149,16 @@ def view_results():
         if responses:
             response_values = [response[0] for response in responses]
             st.bar_chart(response_values)
+
+            # Perform sentiment analysis and display sentiment for each response
+            for j, response in enumerate(responses):
+                sentiment = perform_sentiment_analysis(response[0])
+                st.write(f"Response {j+1}: {response[0]} (Sentiment: {sentiment})")
         else:
             st.write("No responses for this question.")
 
     conn.close()
+
 
 
 
