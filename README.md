@@ -1,6 +1,6 @@
 
 # Online Survey Platform
-The Online Survey and Data Analysis Platform is a web application designed to facilitate the creation of custom surveys, collect responses, and perform data analysis through interactive visualizations and statistics. This platform is particularly useful for market researchers, businesses, and organizations seeking to gather valuable insights from their target audiences.
+The Online Survey and Data Analysis Platform is a web application designed to facilitate the creation of custom surveys, collect responses, and perform data analysis through interactive visualizations.
 
 ## Features
 -Create Custom Surveys: Users can easily create surveys by providing a survey title and adding multiple questions. The platform offers a dynamic interface to add or remove questions on-the-fly, enabling users to design comprehensive surveys.
